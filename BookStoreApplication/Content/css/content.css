@@ -1,0 +1,177 @@
+.test {
+    margin-left: 300px;
+}
+
+body {
+    background-color: #f0f2f5;
+}
+
+.content {
+    margin-left: 0px;
+    margin-top: 45px;
+}
+
+@media (min-width: 768px) {
+    .content {
+        margin-left: 250px;
+        top: 45px;
+    }
+}
+
+.content-not-auth {
+    margin-left: 0px;
+}
+
+.content .block-product {
+}
+
+    .content .block-product .book-not-found {
+        text-align: center;
+    }
+
+.content .product {
+    border: 5px solid #e5e5e5;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background-color: white;
+}
+
+    .content .product > h4 {
+        margin-top: 0px;
+    }
+
+.content .product-item {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+    .content .product-item .item-container {
+        padding-top: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        overflow: hidden;
+        font-size: 16px;
+    }
+
+        .content .product-item .item-container .item-left > button {
+            margin-top: 30px;
+        }
+
+        .content .product-item .item-container .item-left > p {
+            margin-bottom: 2px;
+        }
+
+        .content .product-item .item-container .item-right {
+            float: right;
+            max-width: 250px;
+        }
+
+        .content .product-item .item-container .item-left {
+            float: left;
+        }
+
+
+.content .product > img {
+    max-width: 120px;
+    height: auto;
+    margin-bottom: 5px;
+}
+
+.content .product > p {
+    font-size: 12px;
+    margin-bottom: 0px;
+}
+
+.content .product .label-book {
+    font-size: 10px;
+}
+
+.content .product .price {
+    text-align: center;
+    color: #B31515;
+    font-size: 14px;
+}
+
+.content .product .action-group {
+    margin: 5px auto 0px;
+}
+
+.content .content-top {
+    background-color: white;
+    border-bottom: 5px solid #e5e5e5;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+    .content .content-top .book-search {
+        display: inline-block;
+        float: none;
+        width: 16%;
+    }
+
+.basket {
+    max-width: 650px;
+    margin: 0px auto;
+}
+
+.table-basket {
+    border: 0px double #333;
+    border-collapse: separate;
+    border-spacing: 7px 11px;
+    font-size: 14px;
+}
+
+    .table-basket td {
+        vertical-align: top;
+    }
+
+    .table-basket li {
+        list-style-type: none;
+    }
+
+    .table-basket .img-basket-product {
+        max-width: 100px;
+        height: auto;
+    }
+
+.form-signup {
+    max-width: 350px;
+    margin: 0px auto;
+    padding: 30px;
+}
+
+    .form-signup select {
+        margin-bottom: 5px;
+    }
+
+    .form-signup .form-control {
+        padding: 10px;
+    }
+
+    .form-signup input[type="password"] {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .form-signup button {
+        margin-bottom: 10px;
+    }
+
+.form-add-book {
+    max-width: 500px;
+    margin: 0px auto;
+}
+
+    .form-add-book button {
+        margin-bottom: 10px;
+    }
+
+.paging {
+    clear: both;
+    font-size: 15px;
+}
+
+.form-signup .ng-invalid-required.ng-dirty {
+    border: 1px #43ac6a;
+}

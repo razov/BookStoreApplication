@@ -1,0 +1,36 @@
+<div class="content-top">
+    <div>
+        <h1>Корзина товаров</h1>
+    </div>
+</div>
+<div class="product product-item">
+    <div ng-if="orderDetails.length > 0" class="basket">
+        <table class="table-basket">
+            <tr>
+                <th>#</th>
+                <th>Наименование книги</th>
+                <th>Изображение обложки</th>
+                <th>Стоимость</th>
+                <th>Действия</th>
+            </tr>
+            <tr ng-repeat="item in orderDetails">
+                <td>{{ $index + 1 }}</td>
+                <td><a href="/#/books/{{ item.Book.Id }}">{{ item.Book.Name }}</a></td>
+                <td><img class="img-basket-product" src="{{ item.Book.CoverPath }}" alt=""></td>
+                <td>{{ item.Book.Price | currency:"руб.":0 }}</td>
+                <td><button class="btn btn-sm btn-danger" ng-click="deleteOrderDetails(item)">Удалить из корзины</button></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><strong>Итого:</strong> {{ getSumPrice() | currency:"руб.":0 }}</td>
+            </tr>
+        </table>
+        <button ng-click="addOrder()" ng-disabled="orderDetails.length == 0" class="btn btn-lg btn-success add-order">Добавить заказ</button>
+    </div>
+    <div ng-if="orderDetails == 0">
+        <h2>Ваша корзина пуста</h2>
+        <h3>Перейдите в <a href="/#/books/">каталог</a> для добавления книг в корзину</h3>
+    </div>
+</div>

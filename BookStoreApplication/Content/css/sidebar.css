@@ -1,0 +1,39 @@
+.sidebar {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        background-color: #273238;
+        width: 251px;
+        position: fixed;
+        top: 45px;
+        bottom: 0;
+        left: 0;
+        color: white;
+        z-index: 1000;
+        display: block;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+}
+
+.sidebar > ul > li {
+    border-bottom: 1px solid #37474f;
+}
+
+.sidebar > ul > li > a:hover {
+    background-color: #007196;
+    color: white;
+}
+
+.sidebar > ul > li > a:focus {
+    background-color: #007196;
+}
+
+.sidebar > ul > li > a {
+    font-weight: 300;
+    color: #d9d9d9;
+    padding: 20px;
+    font-size: 16px;
+}

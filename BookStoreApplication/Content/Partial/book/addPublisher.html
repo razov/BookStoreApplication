@@ -1,0 +1,22 @@
+﻿<div class="content-top">
+    <div>
+        <h1>Добавление издателя</h1>
+    </div>
+</div>
+<div class="product product-item">
+    <form name="addBookForm" novalidate ng-if="!savedSuccessfully" class="form-add-book">
+        <div class="form-group" ng-class="{'has-error': addBookForm.name.$invalid, 'has-success': !addBookForm.name.$invalid}">
+            <label for="name" class="control-label">Наименование издательства</label>
+            <input ng-model="publisher.Name" id="name" name="name" class="form-control" type="text" value="" required />
+        </div>
+
+        <button ng-disabled="addBookForm.$invalid" ng-click="addPublisher()" class="btn btn-lg btn-info btn-block">Добавить</button>
+        <div ng-if="!messages.length == 0" class="alert alert-dismissible alert-danger">
+            <p ng-repeat="message in messages">{{ message }}</p>
+        </div>
+    </form>
+    <div ng-if="savedSuccessfully">
+        <h3>Издательство добавлено</h3>
+        <h4>Через 2 секунды Вы будете перенаправлены в <a href="/#/books/">каталог книг</a>...</h4>
+    </div>
+</div>

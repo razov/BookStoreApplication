@@ -1,0 +1,35 @@
+﻿<div class="content-top">
+    <div>
+        <h1>Неподтвержденные заказы</h1>
+    </div>
+</div>
+<div class="product product-item">
+    <div ng-if="orders.length > 0" class="basket">
+        <table class="table-basket">
+            <tr>
+                <th>#</th>
+                <th>Книги</th>
+                <th>Стоимость заказа</th>
+                <th>Действия с заказом</th>
+            </tr>
+            <tr ng-repeat="item in orders">
+                <td>{{ $index + 1 }}</td>
+                <td>
+                    <ul>
+                        <li ng-repeat="orderDetails in item.OrderDetails">{{ orderDetails.Book.Name }}</li>
+                    </ul>
+                </td>
+                <td>{{ getSumOrder(item) | currency:"руб.":0 }}</td>
+                <td>
+                    <div class="btn-group">
+                        <button ng-click="updateOrder(item.Id, true)" class="btn btn-success">Подтвердить</button>
+                        <button ng-click="updateOrder(item.Id, false)" class="btn btn-danger">Отменить</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div ng-if="orders.length == 0">
+        <h2>Неподтвержденные заказы отсутствуют</h2>
+    </div>
+</div>

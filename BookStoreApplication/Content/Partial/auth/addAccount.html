@@ -1,0 +1,36 @@
+﻿<div class="content-top">
+    <div>
+        <h1>Добавление нового пользователя</h1>
+    </div>
+</div>
+<div class="product product-item">
+    <form name="addBookForm" novalidate ng-if="!savedSuccessfully" class="form-add-book">
+        <div class="form-group" ng-class="{'has-error': addBookForm.name.$invalid, 'has-success': !addBookForm.name.$invalid}">
+            <label for="name" class="control-label">Email</label>
+            <input ng-model="user.Email" id="name" name="name" class="form-control" type="email" value="" required />
+        </div>
+        <div class="form-group" ng-class="{'has-error': addBookForm.role.$invalid, 'has-success': !addBookForm.role.$invalid}">
+            <label for="role" class="control-label">Пользователь</label>
+            <select id="role" name="roles" class="form-control" multiple ng-model="user.Roles">
+                <option value="manager">Сотрудник магазина</option>
+                <option value="admin">Администратор</option>
+            </select>
+        </div>
+        <div class="form-group" ng-class="{'has-error': addBookForm.password.$invalid, 'has-success': !addBookForm.password.$invalid}">
+            <label for="password" class="control-label">Пароль</label>
+            <input ng-model="user.Password" id="password" name="password" class="form-control" type="password" value="" required />
+        </div>
+        <div class="form-group" ng-class="{'has-error': addBookForm.confirmPassword.$invalid, 'has-success': !addBookForm.confirmPassword.$invalid}">
+            <label for="confirmPassword" class="control-label">Подтверждение пароля</label>
+            <input ng-model="user.ConfirmPassword" id="confirmPassword" name="confirmPassword" class="form-control" type="password" value="" required />
+        </div>
+        <button ng-disabled="addBookForm.$invalid" ng-click="addUser()" class="btn btn-lg btn-info btn-block">Добавить пользователя</button>
+        <div ng-if="!messages.length == 0" class="alert alert-dismissible alert-danger">
+            <p ng-repeat="message in messages">{{ message }}</p>
+        </div>
+    </form>
+    <div ng-if="savedSuccessfully">
+        <h3>Пользователь добавлен</h3>
+        <h4>Через 2 секунды Вы будете перенаправлены в <a href="/#/books/">каталог книг</a>...</h4>
+    </div>
+</div>

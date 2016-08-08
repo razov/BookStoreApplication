@@ -1,0 +1,65 @@
+﻿<div class="content-top">
+    <div>
+        <h1>Добавление книги</h1>
+    </div>
+</div>
+<div class="product product-item">
+    <form name="addBookForm" novalidate ng-if="!savedSuccessfully" class="form-add-book">
+        <div class="form-group" ng-class="{'has-error': addBookForm.name.$invalid, 'has-success': !addBookForm.name.$invalid}">
+            <label for="name" class="control-label">Название книги</label>
+            <input ng-model="book.Name" id="name" name="name" class="form-control" type="text" value="" required />
+        </div>
+        <div class="form-group" ng-class="{'has-error': addBookForm.category.$invalid, 'has-success': !addBookForm.category.$invalid}">
+            <label for="category" class="control-label">Категория</label>
+            <select id="category" name="category" ng-model="book.CategoryId" class="form-control" ng-options="category.Id as category.Name for category in categories" required></select>
+        </div>
+        <div class="form-group" ng-class="{'has-error': addBookForm.author.$invalid, 'has-success': !addBookForm.author.$invalid}">
+            <label for="author" class="control-label">Автор</label>
+            <select id="author" name="author" ng-model="book.AuthorId" class="form-control" ng-options="author.Id as author.Name for author in authors" required></select>
+        </div>
+        <div class="form-group" ng-class="{'has-error': addBookForm.publisher.$invalid, 'has-success': !addBookForm.publisher.$invalid}">
+            <label for="publisher" class="control-label">Издательство</label>
+            <select id="publisher" name="publisher" ng-model="book.PublisherId" class="form-control" ng-options="publisher.Id as publisher.Name for publisher in publishers" required></select>
+        </div>
+        <div class="form-group" ng-class="{'has-error': addBookForm.count.$invalid, 'has-success': !addBookForm.count.$invalid}">
+            <label for="count" class="control-label">Количество на складе</label>
+            <input ng-model="book.Count" id="count" name="count" class="form-control" type="number" min="0" max="1000" value="1" required />
+        </div>
+        <div class="form-group" ng-class="{'has-error': addBookForm.year.$invalid, 'has-success': !addBookForm.year.$invalid}">
+            <label for="year" class="control-label">Год издания</label>
+            <input ng-model="book.Year" name="year" id="year" class="form-control" type="number" max="{{ year }}" value="" required />
+        </div>
+        <div class="form-group" ng-class="{'has-error': addBookForm.page.$invalid, 'has-success': !addBookForm.page.$invalid}">
+            <label for="page" class="control-label">Количество страниц</label>
+            <input ng-model="book.Page" name="page" id="page" class="form-control" type="number" min="1" value="" required />
+        </div>
+        <div class="form-group" ng-class="{'has-error': addBookForm.isbn.$invalid, 'has-success': !addBookForm.isbn.$invalid}">
+            <label for="isbn" class="control-label">ISBN</label>
+            <input ng-model="book.Isbn" name="isbn" id="isbn" class="form-control" type="text" value="" required />
+        </div>
+        <div class="form-group" ng-class="{'has-error': addBookForm.price.$invalid, 'has-success': !addBookForm.price.$invalid}">
+            <label for="price" class="control-label">Стоимость</label>
+            <input ng-model="book.Price" name="price" id="price" class="form-control" type="number" min="1" value="" required />
+        </div>
+        <button ng-disabled="addBookForm.$invalid" ng-click="addBook()" class="btn btn-lg btn-info btn-block">Добавить</button>
+        <div ng-if="!messages.length == 0" class="alert alert-dismissible alert-danger">
+            <p ng-repeat="message in messages">{{ message }}</p>
+        </div>
+    </form>
+    <div ng-if="savedSuccessfully">
+        <h3 class="text-center">Книга <a href="/#/books/{{ book.Id }}">{{ book.Name }}</a> успешно добавлена в каталог!</h3>
+        <h3 class="text-center">Вы можете загрузить изображение обложки новой книги</h3>
+        <form class="form-add-book">
+            <div ng-if="uploader.queue.length == 0" class="form-group">
+                <label for="cover" class="control-label">Изображение обложки</label>
+                <input type="file" id="cover" class="form-control" nv-file-select uploader="uploader" multiple />
+            </div>
+            <div ng-if="uploader.queue.length > 0" class="btn-group-lg" role="group">
+                <p ng-repeat="file in uploader.queue">{{ file.file.name }}</p>
+                <button ng-click="uploader.uploadAll()" type="button" class="btn btn-success">Загрузить</button>
+                <button ng-click="uploader.clearQueue()" type="button" class="btn btn-danger">Очистить</button>
+            </div>
+        </form>
+        <h3 class="text-center">или перейти в <a href="/#/books/">каталог</a></h3>
+    </div>
+</div>

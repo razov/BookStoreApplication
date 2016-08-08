@@ -1,0 +1,16 @@
+﻿<div class="content-top">
+    <div>
+        <h1>{{ book.Name }}</h1>
+    </div>
+</div>
+<div class="product product-item">
+    <div>
+        <form class="form-add-book" name="addBookForm" novalidate>
+            <div class="form-group" ng-class="{'has-error': addBookForm.name.$invalid, 'has-success': !addBookForm.name.$invalid}">
+                <label for="name" class="control-label">Количество книг на складе</label>
+                <input ng-model="book.Count" id="name" name="name" class="form-control" type="number" min="0" value="" required />
+            </div>
+            <button ng-disabled="addBookForm.$invalid" ng-click="save()" class="btn btn-lg btn-success btn-block">Сохранить</button>
+        </form>
+    </div>
+</div>

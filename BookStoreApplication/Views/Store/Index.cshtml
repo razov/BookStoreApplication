@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="ru" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Store Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/locale")
+    @Scripts.Render("~/bundles/route")
+    @Scripts.Render("~/bundles/local-storage")
+    @Scripts.Render("~/bundles/loading-bar")
+    @Scripts.Render("~/bundles/file-upload")
+    @Scripts.Render("~/bundles/app")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="headerCtrl">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Book Web Store</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-if="authentication.isAuth" ng-controller="handlerElementsBasket" ng-cloak><a href="/#/basket/">Корзина ({{ orderDetailsCount }})</a></li>
+                    <li ng-if="authentication.isAuth"><a ng-click="logOut()" href="">Выйти ({{ authentication.username }})</a></li>
+                    <li ng-if="!authentication.isAuth"><a href="#/login/">Войти</a></li>
+                    <li ng-if="!authentication.isAuth"><a href="#/signup/">Регистрация</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div ng-controller="pageCtrl">
+        <div ng-if="authentication.isAuth" class="sidebar">
+            <ul class="nav">
+                <li><a href="/#/books/"><i class="fa fa-book" aria-hidden="true"></i> Каталог книг</a></li>
+                <li ng-if="authentication.isUser"><a href="/#/orders/"><i class="fa fa-file-text-o" aria-hidden="true"></i> Мои заказы</a></li>
+                <li ng-if="authentication.isManager"><a href="/#/books/add/">Добавить книгу</a></li>
+                <li ng-if="authentication.isManager"><a href="/#/category/add/">Добавить категорию</a></li>
+                <li ng-if="authentication.isManager"><a href="/#/author/add/">Добавить автора</a></li>
+                <li ng-if="authentication.isManager"><a href="/#/publisher/add/">Добавить издателя</a></li>
+                <li ng-if="authentication.isManager"><a href="/#/orders/uncorfirmed/">Мониторинг заказов</a></li>
+                <li ng-if="authentication.isAdmin"><a href="/#/account/">Добавить пользователя</a></li>
+            </ul>
+        </div>
+        <div class="content" ng-class="{'content-not-auth':!authentication.isAuth}" ng-view></div>
+    </div>
+</body>
+</html>

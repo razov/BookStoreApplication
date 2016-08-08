@@ -1,0 +1,21 @@
+<div class="content-top">
+    <div>
+        <h1>{{ book.Name }}</h1>
+    </div>
+</div>
+<div class="product product-item">
+    <div class="item-container">
+        <div class="item-left">
+            <p><b>Категория:</b> {{ book.Category.Name }}</p>
+            <p><b>Автор:</b> {{ book.Author.Name }}</p>
+            <p><b>Издательство:</b> {{ book.Publisher.Name }}</p>
+            <p><b>Год издания:</b> {{ book.Year }}</p>
+            <p><b>Количество страниц:</b> {{ book.Page }}</p>
+            <p><b>ISBN:</b> {{ book.Isbn }}</p>
+            <p><b>Количество на складе:</b> {{ book.Count }}</p>
+            <p><b>Цена:</b> {{ book.Price | currency:"руб.":0 }}</p>
+            <button class="btn btn-default btn-lg" ng-disabled="book.Count == 0" ng-if="authentication.isUser" ng-click="addToBasket(book)">Добавить в корзину <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+        </div>
+        <img class="img-thumbnail item-right" src="{{ book.CoverPath }}">
+    </div>
+</div>
